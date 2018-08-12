@@ -1,0 +1,19 @@
+﻿@model moviesList.ViewModel.ManageMovie
+@{
+    Layout = "";
+}
+
+@using (Html.BeginForm("_DeleteMovie", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Id)
+<div class="modal-body">
+    Movie Name : <b class="text-info">@Html.DisplayFor(m => m.Name)</b> will be deleted permanently.
+
+
+</div>
+<div class="modal-footer">
+    <button type="submit" class="btn btn-success">Delete</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</div>
+}

@@ -1,0 +1,29 @@
+﻿@model moviesList.ViewModel.ManageMovie
+@{
+    Layout = "";
+}
+
+@using (Html.BeginForm("_ManageMovie", "Home", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Id)
+    <div class="modal-body">
+        Name : @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        Plot :  @Html.TextBoxFor(m => m.Plot, new { @class = "form-control" })
+        Release Date : @Html.TextBoxFor(m => m.ReleaseDate, new { @class = "form-control" })
+
+        @if(Model.Poster != null)
+        {
+            <img src="@Model.Poster" />
+
+        }
+
+    Poster : <input asp-for="Poster" type="file" Class="form-control" />
+
+        @* @Html.TextBoxFor(m => m.Poster, new { @class = "form-control" }) *@
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+}
